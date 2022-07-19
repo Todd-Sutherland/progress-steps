@@ -1,16 +1,59 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: #f6f7fb;
+  font-family: "Muli", sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin: 0;
 }
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+/** gray line **/
+.progress-container::before {
+  content: "";
+  background-color: #e0e0e0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%; /** 100% because it is going to represent the gray empty line behind**/
+  z-index: -1;
+}
+
+/** blue line **/
+.progress {
+  background-color: #3498db;
+  position: absolute; /** positioned absolute within the .progress-container (which is absolute) **/
+  top: 50%;
+  left: 0;
+  transform: translateY(
+    -50%
+  ); /** Moves it up 50 percent -Without this, the TOP of the blue line is in the middle of the numbers. We want the MIDDLe of the line in the middle of the numbers. **/
+  height: 4px;
+  width: 0%; /** Width is going to start out at 0%, but we can set it to 50% if we need to see it **/
+  z-index: -1; /** So our blue line is behind the circles and numbers**/
+  transition: 0.4s ease; /** we want our line to transition in a certain duration, not just flip to the next one**/
+}
+
+/** **/
